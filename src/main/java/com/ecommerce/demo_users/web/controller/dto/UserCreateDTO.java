@@ -4,7 +4,7 @@ import jakarta.validation.constraints.*;
 import lombok.*;
 
 @Getter @Setter @NoArgsConstructor @AllArgsConstructor @ToString
-public class UserCreateDto {
+public class UserCreateDTO {
     @NotBlank(message = "Username não pode estar vazio")
     @Pattern(regexp = "^[a-zA-Z0-9]+$", message = "Username deve conter apenas letras e números")
     @Size(min = 3, max = 20, message = "Username deve ter entre 3 e 20 caracteres")

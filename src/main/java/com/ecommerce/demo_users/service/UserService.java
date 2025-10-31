@@ -37,12 +37,7 @@ public class UserService {
                 () -> new EntityNotFoundException(String.format("Usuário id='%s não encontrado. '", id))
         );
     }
-    @Transactional(readOnly = true)
-    public User getbyEmail(String email){
-        return userRepository.findByEmail(email).orElseThrow(
-                () -> new RuntimeException("Email não encontrado")
-        );
-    }
+
     @Transactional
     public User updateEmail(Long id,String password, String newEmail, String confirmedEmail){
         User user = getById(id);

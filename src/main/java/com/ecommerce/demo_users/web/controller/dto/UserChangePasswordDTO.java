@@ -8,7 +8,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class UserChangePasswordDto {
+public class UserChangePasswordDTO {
     @NotBlank(message = "Senha não pode estar vazia")
     @Size(min = 6, message = "Senha deve ter no mínimo 6 caracteres")
     private String password;

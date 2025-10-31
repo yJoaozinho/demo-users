@@ -20,32 +20,32 @@ public class UserController {
     private final UserService userService;
 
     @PostMapping
-    public ResponseEntity<UserResponseDto> createUser(@Valid @RequestBody UserCreateDto userCreateDto){
+    public ResponseEntity<UserResponseDTO> createUser(@Valid @RequestBody UserCreateDTO userCreateDto){
         User user = userService.save(UserMapper.toUser(userCreateDto));
         return ResponseEntity.status(HttpStatus.CREATED).body(UserMapper.toDto(user));
     }
     @GetMapping("/{id}")
-    public ResponseEntity<UserResponseDto> getById(@PathVariable Long id){
+    public ResponseEntity<UserResponseDTO> getById(@PathVariable Long id){
         User user = userService.getById(id);
         return ResponseEntity.status(HttpStatus.OK).body(UserMapper.toDto(user));
     }
     @GetMapping
-    public ResponseEntity<List<UserResponseDto>> getAllUsers(){
+    public ResponseEntity<List<UserResponseDTO>> getAllUsers(){
         List<User> users = userService.getAll();
         return ResponseEntity.status(HttpStatus.OK).body(UserMapper.toListDto(users));
     }
     @PatchMapping("/{id}/password")
-    public ResponseEntity<UserResponseDto> updatePassword(@PathVariable Long id, @Valid @RequestBody UserChangePasswordDto u){
+    public ResponseEntity<UserResponseDTO> updatePassword(@PathVariable Long id, @Valid @RequestBody UserChangePasswordDTO u){
         User user = userService.updatePassword(id, u.getPassword(), u.getNewPassword(), u.getConfirmedPassword());
         return ResponseEntity.status(HttpStatus.OK).body(UserMapper.toDto(user));
     }
     @PatchMapping("/{id}/username")
-    public ResponseEntity<UserResponseDto> updateUsername( @PathVariable Long id, @Valid @RequestBody UserChangeUsernameDto u){
+    public ResponseEntity<UserResponseDTO> updateUsername(@PathVariable Long id, @Valid @RequestBody UserChangeUsernameDTO u){
         User user = userService.updateUsername(id, u.getUsername(), u.getPassword());
         return ResponseEntity.status(HttpStatus.OK).body(UserMapper.toDto(user));
     }
     @PatchMapping("/{id}/email")
-    public ResponseEntity<UserResponseDto> updateEmail( @PathVariable Long id, @Valid @RequestBody UserChangeEmailDto u){
+    public ResponseEntity<UserResponseDTO> updateEmail(@PathVariable Long id, @Valid @RequestBody UserChangeEmailDTO u){
         User user = userService.updateEmail(id, u.getPassword(), u.getNewEmail(), u.getConfirmedEmail());
         return ResponseEntity.status(HttpStatus.OK).body(UserMapper.toDto(user));
     }
