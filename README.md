@@ -34,10 +34,4 @@ Após o login, o token JWT deve ser enviado no header das requisições protegid
 
 Authorization: Bearer <token>
 
-Execução
-mvn spring-boot:run
 
-
-API disponível em:
-
-http://localhost:8080
